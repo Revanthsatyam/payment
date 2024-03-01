@@ -5,3 +5,4 @@ PARAMETERS: "payment.prod.CART_HOST,CART_HOST payment.prod.CART_PORT,CART_PORT p
 schema:
   enabled: false
 
+replicaCount: 2

@@ -10,4 +10,4 @@ ENV         USER_PORT="80"
 ENV         AMQP_HOST="rabbitmq-prod.rsdevops.in"
 ENV         AMQP_USER="roboshop"
 ENV         AMQP_PASS="roboshop123"
-CMD         [ "bash", "uwsgi --ini /app/payment.ini" ]
+CMD         ["uwsgi", "--ini", "/app/payment.ini"]

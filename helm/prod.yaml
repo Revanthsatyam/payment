@@ -1,0 +1,8 @@
+component: payment
+service_type: ClusterIP
+port: 80
+container_port: 8080
+target_port: 8080
+PARAMETERS_ENABLED: true
+PARAMETERS: "payment.prod.CART_HOST_k,CART_HOST payment.prod.CART_PORT_k,CART_PORT payment.prod.USER_HOST_k,USER_HOST payment.prod.USER_PORT_k,USER_PORT payment.prod.AMQP_HOST_k,AMQP_HOST payment.prod.AMQP_USER_k,AMQP_USER payment.prod.AMQP_PASS_k,AMQP_PASS"
+env: prod

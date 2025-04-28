@@ -5,13 +5,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-  Test:
+  test:
     runs-on: workstation
     steps:
     - uses: actions/checkout@v4
     - name: Test cases
       run: echo Test cases passed
+      
   sonarqube-scan:
+    needs: test
     runs-on: workstation
     steps:
     - uses: actions/checkout@v4

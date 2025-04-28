@@ -69,3 +69,12 @@ jobs:
       with:
         images: |
           058264090525.dkr.ecr.us-east-1.amazonaws.com/payment  # Replace with your ECR repo URI
+
+    - name: Build and push to Amazon ECR
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}

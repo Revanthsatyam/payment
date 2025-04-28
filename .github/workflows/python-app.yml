@@ -62,3 +62,10 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Extract metadata (tags, labels)
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: |
+          058264090525.dkr.ecr.us-east-1.amazonaws.com/payment  # Replace with your ECR repo URI

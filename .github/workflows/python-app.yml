@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  sonarqube:
+  sonarqube-scan:
     runs-on: workstation
     steps:
     - uses: actions/checkout@v4
@@ -18,7 +18,11 @@ jobs:
         args: >
           -Dsonar.projectKey="payment"
           -Dsonar.exclusions=**/Dockerfile
-    # Check the Quality Gate status.
+  sonarqube-quality-gate:
+    needs: sonarqube-scan
+    runs-on: workstation
+    steps:
+    - uses: actions/checkout@v4
     - name: SonarQube Quality Gate check
       id: sonarqube-quality-gate-check
       uses: sonarsource/sonarqube-quality-gate-action@master

@@ -14,5 +14,4 @@ jobs:
     - name: Install dependencies
       run: |
         python3.6 -m pip install --upgrade pip
-        pip install pytest
-        if [ -f requirements.txt ]; then pip3.6 install -r requirements.txt; fi
+        if [ -f requirements.txt ]; then python3.6 -m pip install -r requirements.txt; fi

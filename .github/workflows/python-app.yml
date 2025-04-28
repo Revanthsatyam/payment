@@ -9,6 +9,7 @@ jobs:
     runs-on: workstation
     steps:
     - uses: actions/checkout@v4
+    
     - name: SonarQube Scan
       uses: SonarSource/sonarqube-scan-action@v5.1.0 # Ex: v4.1.0, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
       env:
@@ -18,11 +19,7 @@ jobs:
         args: >
           -Dsonar.projectKey="payment"
           -Dsonar.exclusions=**/Dockerfile
-  sonarqube-quality-gate:
-    needs: sonarqube-scan
-    runs-on: workstation
-    steps:
-    - uses: actions/checkout@v4
+          
     - name: SonarQube Quality Gate check
       id: sonarqube-quality-gate-check
       uses: sonarsource/sonarqube-quality-gate-action@master

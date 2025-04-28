@@ -45,3 +45,27 @@ jobs:
 
     - name: Code Security
       run: echo Code Security
+
+  push_to_ecr:
+    needs: code-security
+    runs-on: workstation
+    name: Build Docker Images and Push to AWS ECR
+    permissions:
+      packages: write
+      contents: read
+      id-token: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: us-east-1 
+        role-to-assume: arn:aws:iam::058264090525:role/workstation-role
+        role-session-name: GitHubActions-ECR-Push
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1

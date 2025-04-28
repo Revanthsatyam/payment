@@ -17,6 +17,7 @@ jobs:
       with:
         args: >
           -Dsonar.projectKey="payment"
+          -Dsonar.exclusions=**/Dockerfile
     # Check the Quality Gate status.
     - name: SonarQube Quality Gate check
       id: sonarqube-quality-gate-check

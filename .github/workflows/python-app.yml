@@ -74,4 +74,6 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: 058264090525.dkr.ecr.us-east-1.amazonaws.com/payment:${{ steps.build-number.outputs.tag }}
+        tags: |
+          058264090525.dkr.ecr.us-east-1.amazonaws.com/payment:${{ steps.build-number.outputs.tag }}
+          058264090525.dkr.ecr.us-east-1.amazonaws.com/payment:latest

@@ -88,6 +88,6 @@ jobs:
 
     - name: Update EKS Kube-Config
       run: |
-        awsk eks update-kubeconfig --name prod-eks-cluster --region us-east-1
+        aws eks update-kubeconfig --name prod-eks-cluster --region us-east-1
         kubectl get nodes
   

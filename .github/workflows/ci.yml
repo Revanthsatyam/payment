@@ -81,6 +81,7 @@ jobs:
   deploy_to_eks:
     needs: push_to_ecr
     runs-on: workstation
+    name: Deploy Image to EKS
 
     steps:
     - name: Checkout Repository
@@ -89,4 +90,3 @@ jobs:
     - name: Update EKS Kube-Config
       run: |
         aws eks update-kubeconfig --name prod-eks-cluster --region us-east-1
-        kubectl get nodes

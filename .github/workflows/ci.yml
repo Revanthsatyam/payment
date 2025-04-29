@@ -90,4 +90,3 @@ jobs:
       run: |
         aws eks update-kubeconfig --name prod-eks-cluster --region us-east-1
         kubectl get nodes
-  

@@ -90,3 +90,31 @@ jobs:
     - name: Update EKS Kube-Config
       run: |
         aws eks update-kubeconfig --name prod-eks-cluster --region us-east-1
+
+    - name: Checkout APP code
+      uses: actions/checkout@v4
+      with:
+        repository: Revanthsatyam/payment
+        path: APP
+          
+    - name: Checkout CHART code
+      uses: actions/checkout@v4
+      with:
+        repository: Revanthsatyam/roboshop-helm-d76
+        path: CHART
+
+    - name: Set up Helm
+      uses: aws/setup-helm@v3
+      with:
+        version: 'v3.17.3'
+
+    - name: Set build number tag
+      id: build-number
+      run: |
+        echo "tag=${{ github.run_number }}" >> $GITHUB_OUTPUT
+
+    - name: Deploy with Helm
+      run: |
+        helm upgrade --install payment ./CHART \
+          -f APP/helm/prod.yaml \
+          --set image_tag=${{ steps.build-number.outputs.tag }}

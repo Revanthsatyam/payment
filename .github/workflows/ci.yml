@@ -103,11 +103,6 @@ jobs:
         repository: Revanthsatyam/roboshop-helm-d76
         path: CHART
 
-    - name: Set up Helm
-      uses: aws/setup-helm@v3
-      with:
-        version: 'v3.17.3'
-
     - name: Set build number tag
       id: build-number
       run: |
